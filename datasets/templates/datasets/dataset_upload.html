@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Upload Dataset{% endblock %}
+
+{% block content %}
+<h1 class="display-4">Upload a New Dataset</h1>
+<form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" class="form-control" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="zip_file">ZIP File:</label>
+        <input type="file" id="zip_file" name="zip_file" class="form-control" accept=".zip" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base_generic.html" %}
+
+{% block title %}{{ model.name }}{% endblock %}
+
+{% block content %}
+<h1 class="display-4">{{ model.name }}</h1>
+<p class="lead">{{ model.description }}</p>
+<h2>Copy the code snippet</h2>
+<textarea id="codeSnippet" class="form-control" rows="15" readonly>
+import requests, os
+
+# Set the base URL to the model files
+base_url = '{{ request.scheme }}://{{ request.get_host }}/models/'
+model_id = {{ model.id }}
+list_files_url = f"{base_url}{model_id}/list_files/"
+
+# Fetch the list of files
+response = requests.get(list_files_url)
+
+if response.status_code == 200:
+    file_list = response.json().get('files', [])
+    if not file_list:
+        print("No files found.")
+    else:
+        os.makedirs('model_folder', exist_ok=True)
+        for file_name in file_list:
+            file_url = f"{base_url}{model_id}/files/{file_name}"
+            file_response = requests.get(file_url)
+            if file_response.status_code == 200:
+                file_path = os.path.join('model_folder', file_name)
+                os.makedirs(os.path.dirname(file_path), exist_ok=True)
+                with open(file_path, 'wb') as f:
+                    f.write(file_response.content)
+                print(f"Downloaded {file_name}")
+            else:
+                print(f"Failed to download {file_name}. Status code: {file_response.status_code}")
+else:
+    print(f"Failed to get file list. Status code: {response.status_code}")
+
+# Print the current working directory
+print("Current working directory:", os.getcwd())
+
+# Example usage of the model
+# Load pre-trained model
+import fasttext
+
+model = fasttext.load_model('model_folder/model.bin')  # Adjust the path if necessary
+
+def predict(text):
+    labels, probabilities = model.predict(text)
+    return labels, probabilities
+
+text = "Example text for classification"
+labels, probabilities = predict(text)
+print(f"Labels: {labels}")
+print(f"Probabilities: {probabilities}")
+</textarea>
+<button id="copyButton" class="btn btn-primary mt-3">Copy Code</button>
+<script>
+    document.getElementById("copyButton").onclick = function() {
+        var codeSnippet = document.getElementById("codeSnippet");
+        codeSnippet.select();
+        codeSnippet.setSelectionRange(0, 99999); // For mobile devices
+        document.execCommand("copy");
+    }
+</script>
+{% endblock %}

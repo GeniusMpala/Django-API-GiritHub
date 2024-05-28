@@ -1,0 +1,34 @@
+{% extends "base_generic.html" %}
+
+{% block title %}{{ dataset.name }}{% endblock %}
+
+{% block content %}
+<h1 class="display-4">{{ dataset.name }}</h1>
+<p class="lead">{{ dataset.description }}</p>
+<h2>Copy the code snippet</h2>
+<textarea id="codeSnippet" class="form-control" rows="15" readonly>
+import requests
+import pandas as pd
+from io import StringIO
+
+url = '{{ request.scheme }}://{{ request.get_host }}/datasets/{{ dataset.id }}/download/'
+response = requests.get(url)
+
+if response.ok and '{{ dataset.zip_file.name }}'.lower().endswith('.csv'):
+    data = StringIO(response.text)
+    df = pd.read_csv(data)
+    print(df)
+else:
+    print('Error loading the dataset or the dataset is not a CSV file.')
+</textarea>
+<button id="copyButton" class="btn btn-primary mt-3">Copy Code</button>
+<a href="{% url 'download_dataset_script' dataset.id %}" class="btn btn-secondary mt-3">Download Script</a>
+<script>
+    document.getElementById("copyButton").onclick = function() {
+        var codeSnippet = document.getElementById("codeSnippet");
+        codeSnippet.select();
+        codeSnippet.setSelectionRange(0, 99999); // For mobile devices
+        document.execCommand("copy");
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Models{% endblock %}
+
+{% block content %}
+<h1 class="display-4">Available Pretrained Models</h1>
+<ul class="list-group">
+  {% for model in object_list %}
+  <li class="list-group-item"><a href="{% url 'model_detail' pk=model.id %}">{{ model.name }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

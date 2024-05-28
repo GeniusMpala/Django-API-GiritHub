@@ -1,0 +1,42 @@
+{% extends "base_generic.html" %}
+
+{% block jumbotron %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">GritHub Homepage</h1>
+    <p class="lead">This is the homepage of the application where you can find various datasets and pretrained models.
+
+        .</p>
+</div>
+<div class="row">
+    <div class="col-md-4 feature">
+        <h4>Feature 1: Easy Upload</h4>
+        <p>Quickly upload and manage your datasets and pretrained models using our user-friendly interface.</p>
+    </div>
+    <div class="col-md-4 feature">
+        <h4>Feature 2: Secure Access</h4>
+        <p>Ensure secure access to your resources with robust authentication mechanisms.</p>
+    </div>
+    <div class="col-md-4 feature">
+        <h4>Feature 3: API Integration</h4>
+        <p>Seamlessly integrate with other systems using our comprehensive API endpoints.</p>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-md-6">
+        <h3>Recent Activity</h3>
+        <ul>
+            <li>Uploaded new dataset: <strong>Dataset Name</strong></li>
+            <li>Added new pretrained model: <strong>Model Name</strong></li>
+            <li>Updated dataset: <strong>Dataset Name</strong></li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <h3>Testimonials</h3>
+        <p>"GritHub has revolutionized the way we manage and share our datasets. The interface is intuitive and the support is excellent!" - <strong>John Doe</strong></p>
+        <p>"The secure access features give us peace of mind knowing our data is protected." - <strong>Jane Smith</strong></p>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+{% endblock %}

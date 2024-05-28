@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}GritHub{% endblock %}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .navbar-brand {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff5733 !important; /* Bright color for better visibility */
+        }
+        .navbar {
+            background-color: #f8f9fa; /* Light background color */
+            box-shadow: 0 4px 2px -2px gray; /* Adds a subtle shadow */
+        }
+        .nav-link {
+            font-size: 1.1rem; /* Larger font size */
+            font-weight: 500; /* Semi-bold font weight */
+            color: #17a2b8 !important; /* Info color */
+        }
+        .nav-link:hover {
+            color: #ffc107 !important; /* Warning color on hover */
+            text-decoration: underline; /* Underline on hover */
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 1rem 0;
+            margin-top: 2rem;
+            text-align: center;
+            box-shadow: 0 -4px 2px -2px gray;
+        }
+        .feature {
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="{% url 'homepage' %}">
+            <i class="fas fa-database"></i> 📊 GritHub
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'homepage' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dataset_list' %}">Datasets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'model_list' %}">Models</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'upload_choices' %}">Admin</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        {% block jumbotron %}
+        <div class="jumbotron text-center">
+            <h1 class="display-4">GritHub</h1>
+            <!-- <p class="lead">This is the homepage of the application where you can find various datasets and pretrained models.</p> -->
+        </div>
+        {% endblock %}
+        {% block content %}{% endblock %}
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 GritHub. All rights reserved.</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

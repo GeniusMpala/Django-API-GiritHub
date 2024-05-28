@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Dataset</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+<div class="button-container">
+    <a href="{% url 'homepage' %}" class="button home-button">Home</a>
+    <a href="{% url 'dataset_list' %}" class="button datasets-button">Datasets</a>
+    <button onclick="history.back()" class="button back-button">Back</button>
+</div>
+
+<h1>Upload a New Dataset</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea><br>
+
+    <label for="zip_file">ZIP File:</label>
+    <input type="file" id="zip_file" name="zip_file" accept=".zip" required>
+
+    <button type="submit">Upload</button>
+</form>
+
+</body>
+</html>

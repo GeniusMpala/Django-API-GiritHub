@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Datasets{% endblock %}
+
+{% block content %}
+<h1 class="display-4">Available Datasets</h1>
+<ul class="list-group">
+    {% for dataset in object_list %}
+        <li class="list-group-item"><a href="{% url 'dataset_detail' dataset.id %}">{{ dataset.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

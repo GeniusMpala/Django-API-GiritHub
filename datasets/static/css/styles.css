@@ -1,0 +1,166 @@
+/* styles.css */
+
+/* Reset some default browser styles */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4; /* Light grey background */
+}
+
+/* Style for the navigation bar */
+.nav-bar {
+    background-color: #333; /* Dark grey background */
+    color: #fff;
+    padding: 10px 20px;
+    overflow: auto;
+}
+
+/* Navigation links styles */
+.nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    float: left; /* Align links to the left */
+}
+
+.nav-bar a:hover {
+    background-color: #ddd; /* Light grey background on hover */
+    color: #333;
+}
+
+/* Main content styling */
+.main-content {
+    padding: 20px;
+    max-width: 1200px; /* Max width for the content */
+    margin: auto; /* Center the content */
+}
+
+.main-content h1 {
+    font-size: 2.5em;
+    color: #333;
+    padding-bottom: 10px;
+}
+
+.main-content p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+/* Add more styles as needed */
+/* Button styling */
+.button {
+    background-color: #007bff; /* Bootstrap primary color */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Button hover effect */
+.button:hover {
+    background-color: #0056b3; /* Darken color on hover */
+    color: white;
+}
+
+/* Home button specific styles */
+.home-button {
+    background-color: #28a745; /* Bootstrap success color */
+}
+
+.home-button:hover {
+    background-color: #218838; /* Darken color on hover */
+}
+
+/* Datasets button specific styles */
+.datasets-button {
+    background-color: #17a2b8; /* Bootstrap info color */
+}
+
+.datasets-button:hover {
+    background-color: #138496; /* Darken color on hover */
+}
+
+/* Back button specific styles */
+.back-button {
+    background-color: #222221; /* Bootstrap warning color */
+}
+
+.back-button:hover {
+    background-color: #e0a800; /* Darken color on hover */
+}
+
+/* Admin button specific styles */
+.admin-button {
+    background-color: #6c757d; /* Bootstrap secondary color */
+}
+
+.admin-button:hover {
+    background-color: #5a6268; /* Darken color on hover */
+}
+
+/* Reset and base styles */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #007bff; /* Set the background to a blue color */
+    color: white; /* Set the text color to white for better contrast */
+}
+
+/* Style for the navigation bar */
+.nav-bar {
+    background-color: #0056b3; /* A slightly darker blue for the nav bar for contrast */
+    color: white;
+    padding: 10px 20px;
+    overflow: auto;
+}
+
+/* Navigation links styles */
+.nav-bar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    float: left; /* Align links to the left */
+}
+
+.nav-bar a:hover {
+    background-color: #003d7a; /* An even darker blue on hover */
+    color: white;
+}
+
+/* Main content styling */
+.main-content {
+    padding: 20px;
+    max-width: 1200px; /* Max width for the content */
+    margin: auto; /* Center the content */
+}
+
+.main-content h1 {
+    font-size: 2.5em;
+    padding-bottom: 10px;
+}
+
+.main-content p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+/* Button styles from previous example here */
+/* ... */
+

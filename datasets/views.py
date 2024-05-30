@@ -344,9 +344,35 @@ def list_model_files(request, pk):
     else:
         return JsonResponse({'error': 'Folder does not exist'}, status=404)
 
+
 def serve_model_file(request, pk, filename):
     model = get_object_or_404(PretrainedModel, pk=pk)
     file_path = os.path.join(model.directory_path, filename)
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as f:
+            response = HttpResponse(f.read(), content_type='application/octet-stream')
+            response['Content-Disposition'] = f'attachment; filename={filename}'
+            return response
+    else:
+        raise Http404("File does not exist")
+    
+
+def list_dataset_files(request, pk):
+    dataset = get_object_or_404(Dataset, pk=pk)
+    folder_path = dataset.directory_path
+    if os.path.exists(folder_path):
+        file_list = []
+        for root, dirs, files in os.walk(folder_path):
+            for file in files:
+                file_path = os.path.relpath(os.path.join(root, file), folder_path)
+                file_list.append(file_path)
+        return JsonResponse({'files': file_list})
+    else:
+        return JsonResponse({'error': 'Folder does not exist'}, status=404)
+
+def serve_dataset_file(request, pk, filename):
+    dataset = get_object_or_404(Dataset, pk=pk)
+    file_path = os.path.join(dataset.directory_path, filename)
     if os.path.exists(file_path):
         with open(file_path, 'rb') as f:
             response = HttpResponse(f.read(), content_type='application/octet-stream')

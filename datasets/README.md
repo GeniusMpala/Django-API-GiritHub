@@ -1,0 +1,7 @@
+-API for hosting Models built for Shona and Ndebele Languages
+-Gives access to the datasets and the Shona and Ndebele models
+-The following models are hosted:
+      -shona text to speech model
+      -shona spell checker model
+      -Prunning Algorithm
+      -Shona and Ndebele word  embeddings trained using Facebook's Word-to-Vec
